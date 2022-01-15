@@ -1,11 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, ActivityIndicator, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from 'twrnc';
+import FilmItem from '../components/FilmItem';
 import Header from '../components/Header';
+import api from '../services/api';
 
 const PersonScreen = ({ route }) => {
   const { person } = route.params;
+
+  const [films, setFilms] = useState([]);
+
+  useEffect(() => {
+    async function loadFilms() {
+      const arrayFilms = [];
+
+      for (const url of person.films) {
+        const response = await api.get(url);
+        arrayFilms.push(response.data);
+      }
+
+      setFilms(arrayFilms);
+    }
+
+    loadFilms();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -31,6 +50,13 @@ const PersonScreen = ({ route }) => {
 
       {/* Films */}
       <Text style={tw`text-2xl text-gray-400 text-center my-4`}>Films</Text>
+      {films.length === 0 && <ActivityIndicator size={25} color="#9CA3AF" />}
+
+      <FlatList
+        data={films}
+        renderItem={({ item }) => <FilmItem film={item} />}
+        keyExtractor={(item) => item.title}
+      />
     </SafeAreaView>
   );
 };

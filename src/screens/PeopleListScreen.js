@@ -24,7 +24,7 @@ const PeopleListScreen = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw`flex-1`}>
       <Header />
 
       <FlatList
