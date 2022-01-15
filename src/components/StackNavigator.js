@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PeopleListScreen from '../screens/PeopleListScreen';
 import tw from 'twrnc';
 import PersonScreen from '../screens/PersonScreen';
+import FilmScreen from '../screens/FilmScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ const StackNavigator = () => {
     >
       <Stack.Screen name="PeopleListScreen" component={PeopleListScreen} />
       <Stack.Screen name="PersonScreen" component={PersonScreen} />
+      <Stack.Screen name="FilmScreen" component={FilmScreen} />
     </Stack.Navigator>
   );
 };
