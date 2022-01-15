@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
 
-const PeopleItem = ({ person }) => {
+const PersonItem = ({ person }) => {
   return (
     <View>
       <TouchableOpacity style={tw`p-4 bg-gray-600 m-1 rounded-lg`}>
@@ -12,6 +12,6 @@ const PeopleItem = ({ person }) => {
   );
 };
 
-export default PeopleItem;
+export default PersonItem;
 
 const styles = StyleSheet.create({});

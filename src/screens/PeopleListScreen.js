@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import api from '../services/api';
 import tw from 'twrnc';
 import BlankPageLoading from '../components/BlankPageLoading';
 import Header from '../components/Header';
-import PeopleItem from '../components/PeopleItem';
+import PersonItem from '../components/PersonItem';
 
 const PeopleListScreen = () => {
   const [people, setPeople] = useState([]);
@@ -35,7 +29,7 @@ const PeopleListScreen = () => {
 
       <FlatList
         data={people}
-        renderItem={({ item }) => <PeopleItem person={item} />}
+        renderItem={({ item }) => <PersonItem person={item} />}
         keyExtractor={(item) => item.name}
       />
     </SafeAreaView>
